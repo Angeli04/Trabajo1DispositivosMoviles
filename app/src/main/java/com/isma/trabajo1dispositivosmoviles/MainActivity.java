@@ -29,10 +29,17 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(cambio,new IntentFilter(ACTION_AIRPLANE_MODE_CHANGED));
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(cambio);
+    }
 
-
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(cambio);
+    }
 }
 
 
